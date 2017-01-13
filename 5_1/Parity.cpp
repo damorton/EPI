@@ -5,7 +5,7 @@ using namespace std;
 
 std::map<unsigned int, short> parityCache;
 
-short parity(unsigned long x){
+short parityOf(unsigned long x){
   short result = 0;
   while(x){
     result ^= (x & 1);
@@ -14,7 +14,7 @@ short parity(unsigned long x){
   return result;
 }
 
-short parityUsingParityCache(unsigned long x) {
+short findParityUsingParityCacheOf(unsigned long x) {
   short result = 0;
   const int kWordSize = 16;
   const int kBitmask = 0xFFFF;
@@ -30,7 +30,7 @@ void buildParityCache() {
   short number = std::numeric_limits<short>::max();
   short result = 0;
   while(number) {
-    result = parity(number);
+    result = parityOf(number);
     cache[number] = result;
     number--;
   }
@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
   buildParityCache();
   unsigned long number = 50;
   while(number) {
-    short result = parityUsingParityCache(number);
+    short result = findParityUsingParityCacheOf(number);
     cout << "Parity of " << number << " is " << result  << endl;
     number--;
   }
