@@ -5,7 +5,7 @@ using namespace std;
 
 std::map<unsigned int, short> parityCache;
 
-short Parity(unsigned long x){
+short parity(unsigned long x){
   short result = 0;
   while(x){
     result ^= (x & 1);
@@ -30,7 +30,7 @@ void buildParityCache() {
   short number = std::numeric_limits<short>::max();
   short result = 0;
   while(number) {
-    result = Parity(number);
+    result = parity(number);
     cache[number] = result;
     number--;
   }
