@@ -38,7 +38,6 @@ void buildParityCache() {
   parityCache = cache;
 }
 
-// main 8
 int main(int argc, char *argv[]) {
   buildParityCache();
   unsigned long number = 50;
